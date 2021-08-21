@@ -55,7 +55,8 @@ def get_image_shape(prefix:str) -> int:
     return img.shape
 
 def print_stats(img):
-    print(img.max(), img.min(), img.dtype)
+	if confing.log:
+		print(img.max(), img.min(), img.dtype)
 
 def show(image, title='', size=(10, 10), fontsize=20):
     plt.figure(figsize=size)

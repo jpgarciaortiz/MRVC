@@ -69,8 +69,9 @@ def get_image_shape(prefix:str) -> int:
     return img.shape
 
 def print_stats(image):
-    for i in range(image.shape[2]):
-        print("component", i, image[..., i].max(), image[..., i].min(), image[..., i].dtype)
+	if config.log:
+		for i in range(image.shape[2]):
+			print("component", i, image[..., i].max(), image[..., i].min(), image[..., i].dtype)
 
 def show(image, title='', size=(10, 10), fontsize=20):
     plt.figure(figsize=size)
