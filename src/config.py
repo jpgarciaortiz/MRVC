@@ -13,3 +13,5 @@ color = "YCoCg"
 
 #quantizer = "H264"
 #quantizer = "deadzone"
+
+log = False
