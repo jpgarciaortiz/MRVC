@@ -16,6 +16,7 @@ import pywt
 import image_3 as image
 import L_DWT as L
 import H_DWT as H
+import config
 
 _wavelet = pywt.Wavelet("haar")
 #wavelet = pywt.Wavelet("db1")
@@ -41,8 +42,9 @@ _N_levels = 5
 _extension_mode = "periodization" # Generates the inimal number of coeffs
 #_extension_mode = config.dwt_extension_mode
 
-print("Wavelet =", _wavelet)
-print("DWT extension mode =", _extension_mode)
+if config.log:
+	print("Wavelet =", _wavelet)
+	print("DWT extension mode =", _extension_mode)
 
 def analyze_step(color_image:np.ndarray, wavelet:pywt.Wavelet=_wavelet) -> tuple:
     n_channels = color_image.shape[2]
@@ -79,8 +81,10 @@ def synthesize_step(LL:np.ndarray, H:tuple, wavelet:pywt.Wavelet=_wavelet) -> np
     return color_image
 
 def analyze(color_image:np.ndarray, wavelet:pywt.Wavelet=_wavelet, N_levels:int=_N_levels) -> list:
-    print(wavelet)
-    n_channels = color_image.shape[2]
+    if config.log:
+		print(wavelet)
+    
+	n_channels = color_image.shape[2]
     color_decomposition = [None]*n_channels
     for c in range(n_channels):
         color_decomposition[c] = pywt.wavedec2(data=color_image[:,:,c], wavelet=wavelet, mode=_extension_mode, level=N_levels)
