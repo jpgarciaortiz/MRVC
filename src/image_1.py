@@ -6,10 +6,7 @@ import numpy as np
 import cv2
 import colored
 import config
-
-if config.log:
-    import os
-	
+import os
 import matplotlib.pyplot as plt
 
 
