@@ -81,7 +81,7 @@ def synthesize_step(LL:np.ndarray, H:tuple, wavelet:pywt.Wavelet=_wavelet) -> np
     return color_image
 
 def analyze(color_image:np.ndarray, wavelet:pywt.Wavelet=_wavelet, N_levels:int=_N_levels) -> list:
-    if config.log:
+	if config.log:
 		print(wavelet)
     
 	n_channels = color_image.shape[2]
